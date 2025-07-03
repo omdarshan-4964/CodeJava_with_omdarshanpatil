@@ -39,5 +39,3 @@ Let me know if you'd like me to:
 - Add badges (Java, DSA, GitHub, LeetCode)
 - Add a clickable Table of Contents
 - Auto-generate a folder tree dynamically
-
-You’re almost GitHub-profile ready! 💪🔥
