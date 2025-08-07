@@ -21,6 +21,10 @@ This repository includes core **Java programming concepts** along with a wide ra
 ### ✅ DSA in Java:
 - Arrays & 2D Arrays
 - Strings & Pattern Problems
+- Strings
+- Recursion
+- BitManipulation
+- Divide and Conquer
 - ArrayList
 - LinkedList Part 1
 - LinkedList part 2
