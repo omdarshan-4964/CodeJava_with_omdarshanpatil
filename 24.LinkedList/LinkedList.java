@@ -123,6 +123,90 @@ public class LinkedList {
         return helper(head, key);
     }
 
+    public void reverse() {
+        Node prev = null;
+        Node curr = tail = head;
+        Node next;
+
+        while(curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        head = prev;
+    }
+
+    public void deleteNthFromEnd(int n) {
+        int size = 0;
+        Node temp = head;
+
+        while( temp != null) {
+            temp = temp.next;
+            size++;
+        }
+
+        int i = 1;
+        int iToFind = size - n;
+        Node prev = head;
+
+        while (i < iToFind) {
+            prev = prev.next;
+            i++;
+        }
+
+        prev.next = prev.next.next;
+    }
+
+    private Node findMiNode(Node head) {
+        Node slow = head;
+        Node fast = head;
+
+        while(fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow;
+    }
+
+    public boolean checkPalindrome() {
+        if(head == null && head.next == null) {
+            return true;
+        }
+
+        // find middle
+        Node mid = findMiNode(head);
+
+        //Reverse 2nd half
+        Node curr = mid;
+        Node prev = null;
+
+        while (curr != null) {
+            Node next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        Node right = prev;
+        Node left = head;
+
+        //check if equal
+
+        while (right != null) {
+            if (left.data != right.data) {
+                return false;
+            }
+
+            left = left.next;
+            right = right.next;
+        }
+        return true;
+    }
+
+
     public void print() {
         if(head == null) {
             System.out.println("LL is empty");
@@ -137,18 +221,18 @@ public class LinkedList {
         System.out.println("null");
     }
 
+
+    
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
 
-        ll.addFirst(2);
-        ll.addFirst(1);
-        ll.addLast(4);
-        ll.addLast(5);
-        ll.addMiddle(2, 3);
+        ll.addLast(1);
+        ll.addLast(2);
+        ll.addLast(2);
+        ll.addLast(1);
 
         ll.print();
-
-        System.out.println(ll.recSearch(3));
-        System.out.println(ll.recSearch(10));
+        System.out.println(ll.checkPalindrome());
     }
 }
